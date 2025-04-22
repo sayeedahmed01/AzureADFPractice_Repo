@@ -1,0 +1,443 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "AzureADFPractice1313"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureSqlDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "adfpracticeserver5.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "ADF_Practice_DB_1"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adfpracticeuser"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"server": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]",
+					"database": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('AzureSqlDatabase1_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTable1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "NPI",
+						"type": "varchar"
+					},
+					{
+						"name": "Ind_PAC_ID",
+						"type": "varchar"
+					},
+					{
+						"name": "Ind_enrl_ID",
+						"type": "varchar"
+					},
+					{
+						"name": "Provider_Last_Name",
+						"type": "varchar"
+					},
+					{
+						"name": "Provider_First_Name",
+						"type": "varchar"
+					},
+					{
+						"name": "Provider_Middle_Name",
+						"type": "varchar"
+					},
+					{
+						"name": "Suffix",
+						"type": "varchar"
+					},
+					{
+						"name": "Gender",
+						"type": "char"
+					},
+					{
+						"name": "Credential",
+						"type": "varchar"
+					},
+					{
+						"name": "Medical_School",
+						"type": "varchar"
+					},
+					{
+						"name": "Graduation_Year",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "Primary_Specialty",
+						"type": "varchar"
+					},
+					{
+						"name": "Secondary_Specialty_1",
+						"type": "varchar"
+					},
+					{
+						"name": "Secondary_Specialty_2",
+						"type": "varchar"
+					},
+					{
+						"name": "Secondary_Specialty_3",
+						"type": "varchar"
+					},
+					{
+						"name": "Secondary_Specialty_4",
+						"type": "varchar"
+					},
+					{
+						"name": "All_Secondary_Specialties",
+						"type": "text"
+					},
+					{
+						"name": "Telehealth",
+						"type": "varchar"
+					},
+					{
+						"name": "Facility_Name",
+						"type": "varchar"
+					},
+					{
+						"name": "Org_PAC_ID",
+						"type": "varchar"
+					},
+					{
+						"name": "Num_Org_Members",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "Address_Line_1",
+						"type": "varchar"
+					},
+					{
+						"name": "Address_Line_2",
+						"type": "varchar"
+					},
+					{
+						"name": "Address_Line_2_Supplement",
+						"type": "varchar"
+					},
+					{
+						"name": "City_Town",
+						"type": "varchar"
+					},
+					{
+						"name": "State",
+						"type": "char"
+					},
+					{
+						"name": "ZIP_Code",
+						"type": "varchar"
+					},
+					{
+						"name": "Telephone_Number",
+						"type": "varchar"
+					},
+					{
+						"name": "Ind_Assignment",
+						"type": "char"
+					},
+					{
+						"name": "Grp_Assignment",
+						"type": "char"
+					},
+					{
+						"name": "Address_ID",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ProviderInformation"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "DAC_NationalDownloadableFile.csv",
+						"container": "healthcare-provider-input"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "NPI",
+						"type": "String"
+					},
+					{
+						"name": "Ind_PAC_ID",
+						"type": "String"
+					},
+					{
+						"name": "Ind_enrl_ID",
+						"type": "String"
+					},
+					{
+						"name": "Provider Last Name",
+						"type": "String"
+					},
+					{
+						"name": "Provider First Name",
+						"type": "String"
+					},
+					{
+						"name": "Provider Middle Name",
+						"type": "String"
+					},
+					{
+						"name": "suff",
+						"type": "String"
+					},
+					{
+						"name": "gndr",
+						"type": "String"
+					},
+					{
+						"name": "Cred\t\t\t\t",
+						"type": "String"
+					},
+					{
+						"name": "Med_sch",
+						"type": "String"
+					},
+					{
+						"name": "Grd_yr",
+						"type": "String"
+					},
+					{
+						"name": "pri_spec",
+						"type": "String"
+					},
+					{
+						"name": "sec_spec_1",
+						"type": "String"
+					},
+					{
+						"name": "sec_spec_2",
+						"type": "String"
+					},
+					{
+						"name": "sec_spec_3",
+						"type": "String"
+					},
+					{
+						"name": "sec_spec_4",
+						"type": "String"
+					},
+					{
+						"name": "sec_spec_all",
+						"type": "String"
+					},
+					{
+						"name": "Telehlth\t\t\t\t",
+						"type": "String"
+					},
+					{
+						"name": "Facility Name",
+						"type": "String"
+					},
+					{
+						"name": "org_pac_id",
+						"type": "String"
+					},
+					{
+						"name": "num_org_mem",
+						"type": "String"
+					},
+					{
+						"name": "adr_ln_1",
+						"type": "String"
+					},
+					{
+						"name": "adr_ln_2",
+						"type": "String"
+					},
+					{
+						"name": "ln_2_sprs",
+						"type": "String"
+					},
+					{
+						"name": "City/Town",
+						"type": "String"
+					},
+					{
+						"name": "State",
+						"type": "String"
+					},
+					{
+						"name": "ZIP Code",
+						"type": "String"
+					},
+					{
+						"name": "Telephone Number",
+						"type": "String"
+					},
+					{
+						"name": "ind_assgn",
+						"type": "String"
+					},
+					{
+						"name": "grp_assgn",
+						"type": "String"
+					},
+					{
+						"name": "adrs_id",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Extarct CSV file to ADF_Practice_DB_1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.00:10:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DelimitedText1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSqlTable1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
+			]
+		}
+	]
+}

@@ -1,0 +1,143 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "NPI",
+				"type": "varchar"
+			},
+			{
+				"name": "Ind_PAC_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Ind_enrl_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Provider_Last_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Provider_First_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Provider_Middle_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Suffix",
+				"type": "varchar"
+			},
+			{
+				"name": "Gender",
+				"type": "char"
+			},
+			{
+				"name": "Credential",
+				"type": "varchar"
+			},
+			{
+				"name": "Medical_School",
+				"type": "varchar"
+			},
+			{
+				"name": "Graduation_Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Primary_Specialty",
+				"type": "varchar"
+			},
+			{
+				"name": "Secondary_Specialty_1",
+				"type": "varchar"
+			},
+			{
+				"name": "Secondary_Specialty_2",
+				"type": "varchar"
+			},
+			{
+				"name": "Secondary_Specialty_3",
+				"type": "varchar"
+			},
+			{
+				"name": "Secondary_Specialty_4",
+				"type": "varchar"
+			},
+			{
+				"name": "All_Secondary_Specialties",
+				"type": "text"
+			},
+			{
+				"name": "Telehealth",
+				"type": "varchar"
+			},
+			{
+				"name": "Facility_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Org_PAC_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Num_Org_Members",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Address_Line_1",
+				"type": "varchar"
+			},
+			{
+				"name": "Address_Line_2",
+				"type": "varchar"
+			},
+			{
+				"name": "Address_Line_2_Supplement",
+				"type": "varchar"
+			},
+			{
+				"name": "City_Town",
+				"type": "varchar"
+			},
+			{
+				"name": "State",
+				"type": "char"
+			},
+			{
+				"name": "ZIP_Code",
+				"type": "varchar"
+			},
+			{
+				"name": "Telephone_Number",
+				"type": "varchar"
+			},
+			{
+				"name": "Ind_Assignment",
+				"type": "char"
+			},
+			{
+				"name": "Grp_Assignment",
+				"type": "char"
+			},
+			{
+				"name": "Address_ID",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ProviderInformation"
+		}
+	}
+}

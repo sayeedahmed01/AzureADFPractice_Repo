@@ -34,6 +34,380 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "NPI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NPI",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Ind_PAC_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Ind_PAC_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Ind_enrl_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Ind_enrl_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Provider Last Name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Provider_Last_Name",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Provider First Name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Provider_First_Name",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Provider Middle Name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Provider_Middle_Name",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "suff",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Suffix",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "gndr",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Gender",
+									"type": "String",
+									"physicalType": "char"
+								}
+							},
+							{
+								"source": {
+									"name": "Cred\t\t\t\t",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Credential",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Med_sch",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Medical_School",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Grd_yr",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Graduation_Year",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "pri_spec",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Primary_Specialty",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sec_spec_1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Secondary_Specialty_1",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sec_spec_2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Secondary_Specialty_2",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sec_spec_3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Secondary_Specialty_3",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sec_spec_4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Secondary_Specialty_4",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sec_spec_all",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "All_Secondary_Specialties",
+									"type": "String",
+									"physicalType": "text"
+								}
+							},
+							{
+								"source": {
+									"name": "Telehlth\t\t\t\t",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Telehealth",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Facility Name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Facility_Name",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "org_pac_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Org_PAC_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "num_org_mem",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Num_Org_Members",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "adr_ln_1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Address_Line_1",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "adr_ln_2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Address_Line_2",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ln_2_sprs",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Address_Line_2_Supplement",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "City/Town",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "City_Town",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "State",
+									"type": "String",
+									"physicalType": "char"
+								}
+							},
+							{
+								"source": {
+									"name": "ZIP Code",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ZIP_Code",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Telephone Number",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Telephone_Number",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ind_assgn",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Ind_Assignment",
+									"type": "String",
+									"physicalType": "char"
+								}
+							},
+							{
+								"source": {
+									"name": "grp_assgn",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Grp_Assignment",
+									"type": "String",
+									"physicalType": "char"
+								}
+							},
+							{
+								"source": {
+									"name": "adrs_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Address_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,

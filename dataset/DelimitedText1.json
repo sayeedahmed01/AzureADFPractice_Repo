@@ -1,0 +1,148 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "DAC_NationalDownloadableFile.csv",
+				"container": "healthcare-provider-input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "NPI",
+				"type": "String"
+			},
+			{
+				"name": "Ind_PAC_ID",
+				"type": "String"
+			},
+			{
+				"name": "Ind_enrl_ID",
+				"type": "String"
+			},
+			{
+				"name": "Provider Last Name",
+				"type": "String"
+			},
+			{
+				"name": "Provider First Name",
+				"type": "String"
+			},
+			{
+				"name": "Provider Middle Name",
+				"type": "String"
+			},
+			{
+				"name": "suff",
+				"type": "String"
+			},
+			{
+				"name": "gndr",
+				"type": "String"
+			},
+			{
+				"name": "Cred\t\t\t\t",
+				"type": "String"
+			},
+			{
+				"name": "Med_sch",
+				"type": "String"
+			},
+			{
+				"name": "Grd_yr",
+				"type": "String"
+			},
+			{
+				"name": "pri_spec",
+				"type": "String"
+			},
+			{
+				"name": "sec_spec_1",
+				"type": "String"
+			},
+			{
+				"name": "sec_spec_2",
+				"type": "String"
+			},
+			{
+				"name": "sec_spec_3",
+				"type": "String"
+			},
+			{
+				"name": "sec_spec_4",
+				"type": "String"
+			},
+			{
+				"name": "sec_spec_all",
+				"type": "String"
+			},
+			{
+				"name": "Telehlth\t\t\t\t",
+				"type": "String"
+			},
+			{
+				"name": "Facility Name",
+				"type": "String"
+			},
+			{
+				"name": "org_pac_id",
+				"type": "String"
+			},
+			{
+				"name": "num_org_mem",
+				"type": "String"
+			},
+			{
+				"name": "adr_ln_1",
+				"type": "String"
+			},
+			{
+				"name": "adr_ln_2",
+				"type": "String"
+			},
+			{
+				"name": "ln_2_sprs",
+				"type": "String"
+			},
+			{
+				"name": "City/Town",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "ZIP Code",
+				"type": "String"
+			},
+			{
+				"name": "Telephone Number",
+				"type": "String"
+			},
+			{
+				"name": "ind_assgn",
+				"type": "String"
+			},
+			{
+				"name": "grp_assgn",
+				"type": "String"
+			},
+			{
+				"name": "adrs_id",
+				"type": "String"
+			}
+		]
+	}
+}
